@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <title>Code Hero</title>
+  <style>
+    body { margin: 0; display: flex; height: 100vh; font-family: sans-serif; }
+    #game-container { width: 70%; background: #222; position: relative; }
+    #command-panel { width: 30%; padding: 10px; background: #f5f5f5; display: flex; flex-direction: column; }
+    textarea { flex-grow: 1; font-size: 16px; }
+    button { margin-top: 10px; padding: 10px; font-size: 16px; }
+    #log { margin-top: 10px; color: #d00; }
+
+    #level-info { margin-bottom: 10px; }
+    #success-modal {
+      display: none;
+      position: absolute;
+      top: 30%;
+      left: 25%;
+      width: 50%;
+      background: white;
+      border: 2px solid #444;
+      padding: 20px;
+      text-align: center;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div id="success-modal">
+      <h2>Браво!</h2>
+      <p>Успешно завърши нивото.</p>
+      <button id="next-level">Следващо ниво</button>
+    </div>
+  </div>
+  <div id="command-panel">
+    <div id="level-info">
+      <h2 id="level-title">Заглавие</h2>
+      <p id="level-desc">Описание</p>
+    </div>
+    <textarea id="command-input" placeholder="Пример: move right\nmove down"></textarea>
+    <button id="run-btn">Изпълни</button>
+    <div id="log"></div>
+  </div>
+</body>
+</html>
