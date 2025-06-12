@@ -12,6 +12,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('tiles', 'tilemap.png');
+    this.load.tilemapTiledJSON('map', 'lvl1.json');
+
     this.load.spritesheet('hero', 'hero.png', {
         frameWidth: 64,
         frameHeight: 64
@@ -22,7 +25,11 @@ export default class GameScene extends Phaser.Scene {
     });
 }
 
-  create() {
+  create() { 
+    const map = this.make.tilemap({ key: 'map' });
+    const tileset = map.addTilesetImage('tilemap', 'tiles', 16, 16, 0, 0);
+    map.createLayer(0, tileset!, 0, 0);
+
     this.createAnimations();
     this.loadLevel(this.currentLevelIndex);
 
@@ -47,7 +54,7 @@ export default class GameScene extends Phaser.Scene {
       if (this.currentLevelIndex < levels.length) {
         this.scene.restart();
       } else {
-        alert('🎉 Всички нива са завършени!');
+        alert('Всички нива са завършени!');
       }
     });
   }

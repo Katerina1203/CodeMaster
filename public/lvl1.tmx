@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="12" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="108">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer id="1" name="Слой с плочки 1" width="12" height="11">
+  <data encoding="csv">
+2,3,3,3,3,3,2,3,2,3,3,3,
+3,3,2,2,3,2,3,3,3,3,3,3,
+3,2,2,2,3,2,2,2,2,3,3,2,
+2,3,26,3,2,3,3,3,3,3,2,2,
+2,3,26,26,26,26,26,3,3,2,3,2,
+2,3,2,2,3,3,26,3,3,3,3,3,
+2,3,3,2,3,3,26,3,3,3,2,3,
+3,3,2,3,3,2,26,26,26,26,2,3,
+3,3,3,3,3,3,3,3,3,26,2,3,
+2,3,3,3,3,3,2,3,3,2,3,3,
+2,3,2,2,3,2,2,2,3,2,3,3
+</data>
+ </layer>
+ <objectgroup id="5" name="Слой с обекти 1">
+  <object id="24" gid="17" x="0.763372" y="29.9084" width="16" height="16"/>
+  <object id="27" gid="5" x="0.489516" y="15.9418" width="16" height="16"/>
+  <object id="28" gid="6" x="16.3731" y="14.2987" width="16" height="16"/>
+  <object id="29" gid="7" x="32.5306" y="13.751" width="16" height="16"/>
+  <object id="40" gid="29" x="18.0163" y="20.5973" width="16" height="16"/>
+  <object id="42" gid="20" x="31.4352" y="26.0745" width="17.917" height="16"/>
+  <object id="44" gid="10" x="48.1404" y="13.751" width="15.4523" height="16.2739"/>
+  <object id="46" gid="17" x="17.1947" y="29.0869" width="16" height="16"/>
+  <object id="47" gid="17" x="172.471" y="30.73" width="16" height="16"/>
+  <object id="48" gid="30" x="-3.89217" y="109.874" width="16" height="16"/>
+  <object id="49" gid="31" x="11.7176" y="110.148" width="16" height="16"/>
+  <object id="60" gid="29" x="171.923" y="15.668" width="16" height="16"/>
+  <object id="62" gid="6" x="50.3312" y="14.2987" width="16" height="16"/>
+  <object id="64" gid="21" x="55.5344" y="14.0248" width="16" height="16"/>
+  <object id="65" gid="17" x="50.605" y="21.4189" width="16" height="16"/>
+  <object id="69" gid="21" x="2.68036" y="45.5182" width="16" height="16"/>
+  <object id="75" gid="17" x="36.3646" y="23.8836" width="16" height="16"/>
+  <object id="81" gid="17" x="28.9705" y="31.5516" width="16" height="16"/>
+  <object id="82" gid="17" x="18.0163" y="29.0869" width="16" height="16"/>
+  <object id="85" gid="3" x="162.612" y="32.647" width="14.083" height="16.2739"/>
+  <object id="86" gid="9" x="185.616" y="11.834" width="16" height="16"/>
+  <object id="94" gid="6" x="160.969" y="176.147" width="16" height="16"/>
+  <object id="95" gid="7" x="177.674" y="175.873" width="16" height="16"/>
+  <object id="96" gid="5" x="145.359" y="175.326" width="16" height="16"/>
+  <object id="98" gid="4" x="129.202" y="175.873" width="16" height="16"/>
+  <object id="100" gid="28" x="174.662" y="63.3188" width="16" height="16"/>
+  <object id="101" gid="16" x="174.662" y="77.8331" width="16" height="16"/>
+  <object id="102" gid="16" x="158.504" y="96.1814" width="16" height="16"/>
+  <object id="103" gid="4" x="158.778" y="81.1194" width="16" height="16"/>
+  <object id="104" gid="4" x="174.388" y="95.086" width="16" height="16"/>
+  <object id="105" gid="16" x="174.662" y="109.6" width="16" height="16"/>
+  <object id="106" gid="3" x="16.647" y="110.422" width="16" height="16"/>
+ </objectgroup>
+</map>
