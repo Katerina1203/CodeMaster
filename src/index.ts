@@ -5,9 +5,15 @@ const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
+  backgroundColor: '#333',
   parent: 'game-container',
   scene: [GameScene],
-  physics: { default: 'arcade' }
+  physics: {
+    default: 'arcade',
+    arcade: {
+      debug: false
+    }
+  }
 };
 
-new Phaser.Game(config);
+export default new Phaser.Game(config);

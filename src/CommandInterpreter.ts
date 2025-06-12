@@ -1,11 +1,22 @@
 export function executeCommandsFromInput(
   scene: Phaser.Scene,
   sprite: Phaser.GameObjects.Sprite,
-  commands: string[]
+  commands: string[],
+  onComplete?: () => void
 ) {
+  console.log('executeCommandsFromInput CALLED with:', commands);
+
+  if (!commands || commands.length === 0) {
+    console.warn(' Няма команди за изпълнение.');
+    return;
+  }
+
   commands.forEach((command, index) => {
+    const isLast = index === commands.length - 1;
+
     scene.time.delayedCall(index * 600, () => {
-      executeCommand(scene, sprite, command);
+      console.log(` Изпълнява се команда [${index}]: "${command}"`);
+      executeCommand(scene, sprite, command, isLast ? onComplete : undefined);
     });
   });
 }
@@ -13,58 +24,60 @@ export function executeCommandsFromInput(
 function executeCommand(
   scene: Phaser.Scene,
   sprite: Phaser.GameObjects.Sprite,
-  command: string
+  command: string,
+  onComplete?: () => void
 ) {
   const distance = 50;
   const anims = sprite.anims;
   const key = command.trim().toLowerCase();
 
+  const playAndMove = (
+    animKey: string,
+    prop: 'x' | 'y',
+    delta: number
+  ) => {
+    if (!anims.animationManager.exists(animKey)) {
+      console.warn(` Анимацията "${animKey}" не съществува`);
+      onComplete?.();
+      return;
+    }
+
+    anims.play(animKey, true);
+
+    const target = prop === 'x'
+      ? { x: sprite.x + delta }
+      : { y: sprite.y + delta };
+
+    scene.tweens.add({
+      targets: sprite,
+      ...target,
+      duration: 400,
+      onComplete: () => {
+        anims.stop();
+        onComplete?.();
+      }
+    });
+  };
+
   switch (key) {
     case 'move right':
-      if (!anims.animationManager.exists('walk-right')) return console.warn('❌ walk-right missing');
-      anims.play('walk-right', true);
-      scene.tweens.add({
-        targets: sprite,
-        x: sprite.x + distance,
-        duration: 400,
-        onComplete: () => anims.stop()
-      });
+      playAndMove('walk-right', 'x', distance);
       break;
 
     case 'move left':
-      if (!anims.animationManager.exists('walk-left')) return console.warn('❌ walk-left missing');
-      anims.play('walk-left', true);
-      scene.tweens.add({
-        targets: sprite,
-        x: sprite.x - distance,
-        duration: 400,
-        onComplete: () => anims.stop()
-      });
+      playAndMove('walk-left', 'x', -distance);
       break;
 
     case 'move up':
-      if (!anims.animationManager.exists('walk-up')) return console.warn('❌ walk-up missing');
-      anims.play('walk-up', true);
-      scene.tweens.add({
-        targets: sprite,
-        y: sprite.y - distance,
-        duration: 400,
-        onComplete: () => anims.stop()
-      });
+      playAndMove('walk-up', 'y', -distance);
       break;
 
     case 'move down':
-      if (!anims.animationManager.exists('walk-down')) return console.warn('❌ walk-down missing');
-      anims.play('walk-down', true);
-      scene.tweens.add({
-        targets: sprite,
-        y: sprite.y + distance,
-        duration: 400,
-        onComplete: () => anims.stop()
-      });
+      playAndMove('walk-down', 'y', distance);
       break;
 
     default:
-      console.warn(`⚠️ Непозната команда: "${command}"`);
+      console.warn(` Непозната команда: "${command}"`);
+      onComplete?.();
   }
 }
